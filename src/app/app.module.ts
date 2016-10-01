@@ -4,27 +4,32 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from "./app-routing.module";
 
-//Recipe Components
-import {DisplayRecipeComponent} from './Recipes/recipe-display.component';
-import {RecipeAddComponent} from './Recipes/recipe-add.component';
-import {IngredientAddComponent} from './Recipes/ingredient-add.component';
-import {RecipePreviewComponent} from './Recipes/recipe-preview.component';
+//Art Components
+import {DisplayArtComponent} from './Art/art-display.component';
+import {ArtAddComponent} from './Art/art-add.component';
+import {MaterialAddComponent} from './Art/material-add.component';
+import {ArtPreviewComponent} from './Art/art-preview.component';
+
+//Material Components
+import {DisplayMaterialComponent} from './MaterialList/display-material.component';
 
 //Controls
-import {Recipe} from './Controls/Recipe';
+import {Art} from './Controls/Art';
 
 //Services
-import {RecipeManagerService} from './Services/recipe-manager.service';
+import {ArtManagerService} from './Services/art-manager.service';
+import {MaterialManagerService} from './Services/material-manager.service';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayRecipeComponent,
-    RecipeAddComponent,
-    IngredientAddComponent,
-    RecipePreviewComponent
+    DisplayArtComponent,
+    ArtAddComponent,
+    MaterialAddComponent,
+    ArtPreviewComponent,
+    DisplayMaterialComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     routing
   ],
-  providers: [RecipeManagerService],
+  providers: [ArtManagerService, MaterialManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

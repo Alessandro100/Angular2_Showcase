@@ -1,0 +1,15 @@
+<h1>this is display</h1>
+
+<div>
+    <div class = "success_button button" (click) = "newArt()">New Art</div>
+    <div>
+        <ul><!--ng for going to be needed -->
+            <li *ngFor = "let Art of allArts; let i = index" (click) = "Preview_Art(i)">
+                <h4>{{Art.title}}</h4>
+                <label>{{Art.content}}</label><br>
+                <img src = "{{Art.img}}" width="100px" height="100px">
+            </li>
+        </ul>
+    </div>
+    <router-outlet></router-outlet>
+</div>

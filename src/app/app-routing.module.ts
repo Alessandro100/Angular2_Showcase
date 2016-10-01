@@ -2,17 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //components
-import { DisplayRecipeComponent } from "./Recipes/recipe-display.component";
-import { RecipeAddComponent } from "./Recipes/recipe-add.component";
+import { DisplayArtComponent } from "./Art/art-display.component";
+import { ArtAddComponent } from "./Art/art-add.component";
+import { DisplayMaterialComponent } from './MaterialList/display-material.component';
 
 //children router modules
-import { RECIPE_ROUTES } from "./Recipes/recipe.routes";
+import { ART_ROUTES } from "./Art/art.routes";
 
 //Sets the routing paths for the program
-const routes: Routes = [
-    {path: '', redirectTo: "/recipes", pathMatch: "full" },//sets the home directory to /recipes
-    {path: 'recipes', component: DisplayRecipeComponent},//this is the home component
-    {path: 'recipes', component: DisplayRecipeComponent, children: RECIPE_ROUTES}
+const routes: Routes = [//level one routing
+    {path: '', redirectTo: "/Arts", pathMatch: "full" },//sets the home directory to /Arts
+    {path: 'Arts', component: DisplayArtComponent},//this is the home component
+    {path: 'Arts', component: DisplayArtComponent, children: ART_ROUTES},
+    {path: 'Material', component: DisplayMaterialComponent}
     //add shopping list component after
 ];
 

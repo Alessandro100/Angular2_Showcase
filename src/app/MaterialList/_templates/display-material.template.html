@@ -1,0 +1,34 @@
+<h1>This is Material List</h1>
+<div>
+    <label>Add Material</label>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            
+        </tr>
+        <tr>
+            <td><input type="text" [(ngModel)] = newMaterial.name></td>
+            <td><input type="text" [(ngModel)] = newMaterial.amount></td>
+            <td><input type="text" [(ngModel)] = newMaterial.description></td>
+            <div class = "button success_button">Add</div>
+        </tr>
+    </table>
+</div>
+<hr>
+<div>
+    <label>Materials to Get</label>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+        </tr>
+        <tr *ngFor = "let materials of materials_needed">
+            <td>{{materials.name}}</td>
+            <td>{{materials.amount}}</td>
+            <td>{{materials.description}}</td>
+        </tr>
+    </table>
+</div>

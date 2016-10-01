@@ -2,22 +2,22 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
 
-import {Recipe} from "../Controls/Recipe";
-import {RecipeManagerService} from "../Services/recipe-manager.service";
+import {Art} from "../Controls/Art";
+import {ArtManagerService} from "../Services/art-manager.service";
 import {Subscription} from "rxjs/Rx"
 
 @Component({
     selector: 'my-preview',
-    templateUrl: "./_templates/recipe-preview.template.html"
+    templateUrl: "./_templates/Art-preview.template.html"
 })
 
-export class RecipePreviewComponent implements OnDestroy{
+export class ArtPreviewComponent implements OnDestroy{
 
     private subscription: Subscription
     id:number
-    selected_recipe= new Recipe();
+    selected_Art= new Art();
 
-    constructor(private _activatedroute:ActivatedRoute, private _recipemanager: RecipeManagerService, private _router: Router){
+    constructor(private _activatedroute:ActivatedRoute, private _Artmanager: ArtManagerService, private _router: Router){
         this.subscription = _activatedroute.params.subscribe(//the _activatedroute can run without this.subscription
             (param: any) => this.ChangeData(param['id']) //look into => functionality
         );
@@ -25,13 +25,17 @@ export class RecipePreviewComponent implements OnDestroy{
 
     ChangeData(param){
         this.id = param;
-        this._recipemanager.getAllRecipes().subscribe(
-            (data:any) => this.selected_recipe = this._recipemanager.Object_To_Array(data)[this.id]
+        this._Artmanager.getAllArts().subscribe(
+            (data:any) => this.selected_Art = this._Artmanager.Object_To_Array(data)[this.id]
         );
     }
 
     onEdit(){
-        this._router.navigate(['recipes/add', this.id]);
+        this._router.navigate(['Arts/add', this.id]);
+    }
+
+    onDelete(){
+        //import firebase
     }
 
     ngOnDestroy(){

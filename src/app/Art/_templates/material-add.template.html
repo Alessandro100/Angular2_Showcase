@@ -1,0 +1,21 @@
+<!-- excess of a class, but good for practice -->
+<div>
+    <h3>Add Material</h3>
+
+    <!--Add Validation-->
+    <form (ngSubmit) = "addMaterial()">
+        <div>
+            <label>Name: </label>
+            <input type="text" [(ngModel)] = "material.name" name = "name">
+        </div>
+        <div>
+            <label>Amount: </label>
+            <input type="text" [(ngModel)] = "material.amount" name = "amount">
+        </div>
+        <div>
+            <label>Description: </label>
+            <input type="text" [(ngModel)] = "material.description" name = "description">
+        </div>
+        <div class = "button success_button" type = "submit" (click) = "addMaterial()">Add</div>
+    </form>
+</div>

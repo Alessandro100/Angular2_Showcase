@@ -1,0 +1,17 @@
+<h1>This is Art Preview: {{id}}</h1>
+<div>
+    <img src = "{{selected_Art.img}}" width = "300px" height="300px">
+    <h2>{{selected_Art.title}}</h2>
+    <div>
+        <div class = "button success_button">To Shopping List</div>
+        <div class = "button info_button" (click) = "onEdit()">Edit</div>
+        <div class = "button error_button" (click) = "onDelete()"> Delete</div>
+    </div>
+    <hr>
+    <label>{{selected_Art.content}}</label>
+    <ul>
+        <li *ngFor = "let material of selected_Art.material">
+            {{material.name}}({{material.amount}})
+        </li>
+    </ul>
+</div>
