@@ -12,8 +12,17 @@ export class ArtManagerService{
 
     }
 
-    deleteArt(index: number){
-        this.allArts.splice(index,1);
+    deleteArt(chosen){//works, weird loading scheme (need to work with asynchronous things)
+        let url = "https://angular2-showcase-e0e95.firebaseio.com/Arts/" + chosen + ".json"; 
+        return this._http.delete(url)
+            .map((Art: Response) => Art.json());
+    }
+
+    setEditArt(chosen, newEdit: Art){
+        const body = JSON.stringify(newEdit);
+        let url = "https://angular2-showcase-e0e95.firebaseio.com/Arts/" + chosen + ".json";
+        return this._http.put(url, body)
+            .map((res:Response) => res.json());
     }
 
     addNewArt(new_Art: Art){
@@ -22,35 +31,6 @@ export class ArtManagerService{
         return this._http.post('https://angular2-showcase-e0e95.firebaseio.com/Arts.json', body)
             .map((Art: Response) => Art.json());//sends data
         //navigate back?
-    }
-
-    setEditArt(new_Art: Art, index: number){
-       /* console.log("this is a test: ");//oh fuckerinos
-        this._http.get("https://angular2-showcase-e0e95.firebaseio.com/Arts/-KSxtAQ3zlLyYDiRvEaj.json").subscribe(
-            (data:any) => console.log(data)
-        );*/
-
-        //real shit
-
-        /*
-        const body = JSON.stringify(new_Art);//turns data into db ready
-        let keys;
-
-        this.getAllArts().subscribe(
-            (data:any) => keys = Object.keys(data)
-        );
-        
-        let chosen = keys[index];
-        console.log("this is chosen: " + chosen);
-        let url = "https://angular2-showcase-e0e95.firebaseio.com/Arts/"+chosen+".json";
-        console.log("this is the url: " + url);
-
-        return this._http.post(url, body)
-            .map((Art: Response) => Art.json());*/
-    }
-
-    getArt(index: number){
-        return this.allArts[index];
     }
     
     getAllArts(){
@@ -66,6 +46,14 @@ export class ArtManagerService{
             return [];
         }
         return Object.keys(data).map(key => data[key]);
+    }
+
+    getObjectID(data, index:number){//retrieves the way firebase encrypts data
+        let holder =[];
+        for(var name in data) {
+            holder.push(name);
+        }
+        return holder[index];
     }
 
 }

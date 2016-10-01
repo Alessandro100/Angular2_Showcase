@@ -35,7 +35,12 @@ export class ArtPreviewComponent implements OnDestroy{
     }
 
     onDelete(){
-        //import firebase
+        this._Artmanager.getAllArts().subscribe(
+            (data:any) => this._Artmanager.deleteArt(this._Artmanager.getObjectID(data, this.id)).subscribe(
+                (res) => console.log(res)
+            )
+        );
+        this._router.navigate(['../']);
     }
 
     ngOnDestroy(){

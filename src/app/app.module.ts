@@ -6,7 +6,7 @@ import { routing } from "./app-routing.module";
 
 //Art Components
 import {DisplayArtComponent} from './Art/art-display.component';
-import {ArtAddComponent} from './Art/art-add.component';
+import {ArtAddComponent} from './Art/art-add.component'; 
 import {MaterialAddComponent} from './Art/material-add.component';
 import {ArtPreviewComponent} from './Art/art-preview.component';
 

@@ -58,9 +58,19 @@ export class ArtAddComponent implements OnInit{
             this._Artmanager.addNewArt(this.Art).subscribe(
             error => console.log(error));
         }else{
-            /*this._Artmanager.setEditArt(this.Art, this.index_select).subscribe(
-                error => console.log(error)
-            ); DOESNT WORK GET BACK TO IT*/
+            /*
+                this._Artmanager.getAllArts().subscribe(
+                    (data:any) => this._Artmanager.deleteArt(this._Artmanager.getObjectID(data, this.id)).subscribe(
+                    (res) => console.log(res)
+                )
+            );
+                this._router.navigate(['../']);    
+            */
+            this._Artmanager.getAllArts().subscribe(//gets all the data
+                (data:any) => this._Artmanager.setEditArt(this._Artmanager.getObjectID(data, this.index_select), this.Art).subscribe(//takes the data and gets the one needed, executes
+                    (res) => console.log(res)
+                )
+            );
         }
         this._router.navigate(['../']);
     }
