@@ -1,0 +1,33 @@
+
+<div style = "float:right;">
+    <h1>This is Add</h1>
+
+    <!-- Add validation -->
+    <form (ngSubmit) = "OnSubmit()">
+        <div class = "button success_button" type = "submit">Save</div>
+        <div class = "button error_button" (click) = "OnCancel()">Cancel</div>
+        <div>
+            <label>Title:</label><br>
+            <input type="text" [(ngModel)] = "recipe.title" name = "title">
+        </div>
+        <div>
+            <label>Image URL:</label><br>
+            <input type="text" [(ngModel)] = "recipe.img" name = "img"><br>
+            <img src = "{{recipe.img}}" width="100px" height="100px">
+        </div>
+        <div>
+            <label>Content:</label><br>
+            <input type="text" [(ngModel)] = "recipe.content" name = "content"> <!-- make a textarea -->
+        </div>
+        <br>
+        <div>
+            <label>Ingredients</label><br>
+            <ul>
+                <li *ngFor = "let item of recipe.ingredients">{{item.name}}({{item.amount}})</li>
+            </ul>
+        </div>
+        <div>
+            <my-ingredient-add></my-ingredient-add>
+        </div>
+    </form>
+</div>

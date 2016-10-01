@@ -1,0 +1,32 @@
+ul{
+    list-style: none;
+}
+
+.nav{
+    background-color: #FDECBB;
+    width: 100%;
+    padding: 20px;
+}
+
+.nav ul{
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+}
+
+.nav li{
+    display: inline;
+    margin: 10px;
+}
+
+.nav .link_name{
+    font-size: 20px;
+}
+
+.nav .active{
+    background-color: #F3C69A
+}
+
+.nav .page_name{
+    font-size: 25px;
+}

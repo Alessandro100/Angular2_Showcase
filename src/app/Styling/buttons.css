@@ -1,0 +1,21 @@
+.button{
+    border-radius: 3px;
+    padding: 10px 18px 10px 18px;
+    color: white; 
+    text-align: center;
+    display: inline;
+    font-size: 20px;
+    /*add a font of some sort*/
+}
+
+.success_button{
+    background-color:#619F9B;
+}
+
+.info_button{
+    background-color: #F3C69A;
+}
+
+.error_button{
+    background-color: #E98D79;
+}
