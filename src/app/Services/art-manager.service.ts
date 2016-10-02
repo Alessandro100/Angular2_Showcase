@@ -38,7 +38,8 @@ export class ArtManagerService{
             .map((response: Response) => response.json());//transforms it into js objects
     }
 
-    //sep
+
+    //DATA SORTING TOOLS
 
     Object_To_Array(data){
         console.log(data);

@@ -12,7 +12,11 @@
             <td><input type="text" [(ngModel)] = newMaterial.name></td>
             <td><input type="text" [(ngModel)] = newMaterial.amount></td>
             <td><input type="text" [(ngModel)] = newMaterial.description></td>
-            <div class = "button success_button">Add</div>
+            <div *ngIf="isNew" class = "button success_button" (click) = "addLocalMaterial()">Add</div>
+
+            <div *ngIf="!isNew" class = "button success_button" (click) = "saveLocalMaterial()">Save</div>
+            <div *ngIf="!isNew" class = "button info_button" (click) = "onCancel()">Cancel</div>
+            <div *ngIf="!isNew" class = "button error_button" (click) = "deleteLocalMaterial()">Delete</div>
         </tr>
     </table>
 </div>
@@ -25,10 +29,11 @@
             <th>Amount</th>
             <th>Description</th>
         </tr>
-        <tr *ngFor = "let materials of materials_needed">
+        <tr *ngFor = "let materials of materials_needed; let i = index" (click) = "editLocalMaterial(i)">
             <td>{{materials.name}}</td>
             <td>{{materials.amount}}</td>
             <td>{{materials.description}}</td>
         </tr>
     </table>
+    <div class = "button success_button" (click) = "onSave()">Save to Database</div>
 </div>

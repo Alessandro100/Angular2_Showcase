@@ -12,17 +12,16 @@ export class MaterialManagerService{
     }
 
     getAllMaterials(){
-        return this._http.get('https://angular2-showcase-e0e95.firebaseio.com/User_Material.json')//gets the data
+        return this._http.get('https://angular2-showcase-e0e95.firebaseio.com/Material.json')//gets the data
             .map((response: Response) => response.json());//transforms it into js objects
     }
 
     saveAllMaterials(materialArray: Material[]){
         //firebase replace function... this is going to be the same for the edit 
-        if(materialArray.length == 0){
-            //this assumes the user doesnt need materials => empty repo
-        }else{
-            //replace the current repo with this one
-        }
+        const body = JSON.stringify(materialArray);
+        let url = "https://angular2-showcase-e0e95.firebaseio.com/Material.json";
+        return this._http.put(url, body)
+            .map((res:Response) => res.json());
     }
 
     Object_To_Array(data){

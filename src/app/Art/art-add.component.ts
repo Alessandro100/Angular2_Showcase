@@ -15,6 +15,8 @@ import {Material} from "../Controls/Materials";
 })
 
 export class ArtAddComponent implements OnInit{
+
+    data_on_init;
     isNew = true;
     index_select: number;
     Art = new Art(); //start off with a blank Art and adds if its an edit
@@ -26,7 +28,11 @@ export class ArtAddComponent implements OnInit{
     }
 
     addMaterial(newMaterial: Material){
-        this.Art.materials.push(newMaterial);
+        if(this.Art.materials == null){
+            this.Art.materials = [newMaterial];
+        }else{
+            this.Art.materials.push(newMaterial);
+        }
     }
 
     deleteMaterial(index: number){
@@ -45,7 +51,9 @@ export class ArtAddComponent implements OnInit{
     }
 
     ngOnInit(){
-        
+        this._Artmanager.getAllArts().subscribe(
+            (data:any) => this.data_on_init = data
+        );
     }
 
     OnCancel(){
@@ -53,23 +61,13 @@ export class ArtAddComponent implements OnInit{
     }
 
     OnSubmit(){ 
-        console.log("passing");
-        if(this.isNew){
+        if(this.isNew){//save when its new
             this._Artmanager.addNewArt(this.Art).subscribe(
             error => console.log(error));
-        }else{
-            /*
-                this._Artmanager.getAllArts().subscribe(
-                    (data:any) => this._Artmanager.deleteArt(this._Artmanager.getObjectID(data, this.id)).subscribe(
-                    (res) => console.log(res)
-                )
-            );
-                this._router.navigate(['../']);    
-            */
-            this._Artmanager.getAllArts().subscribe(//gets all the data
-                (data:any) => this._Artmanager.setEditArt(this._Artmanager.getObjectID(data, this.index_select), this.Art).subscribe(//takes the data and gets the one needed, executes
-                    (res) => console.log(res)
-                )
+        }else{//save when its an edit
+            let key_name = this._Artmanager.getObjectID(this.data_on_init, this.index_select);//gets the encrypted firebase name
+            this._Artmanager.setEditArt(key_name, this.Art).subscribe(
+                (res) => console.log(res)
             );
         }
         this._router.navigate(['../']);

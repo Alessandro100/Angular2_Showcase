@@ -1,0 +1,53 @@
+input{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box; 
+}
+
+label{
+    font-size: 25px;
+}
+
+.title{
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #232F3B;
+}
+
+.sub_text{
+    font-size: 17px;
+}
+
+
+/*Display Component*/
+.display_body{
+    background-color: #fef8e6;/*light shade of og*/
+    border: 6px solid #9DC1BE;
+    padding: 10px 5% 10px 5%;
+    width: 75%;
+}
+
+.post{
+    background-color: #DFD4DD;
+    padding: 12px;
+    width: 40%;
+    margin: 3px;
+    display: table;
+}
+
+.post img{
+    float: right;
+    border: 2px solid black;
+    margin: 5px;
+    width: 125px;
+    height: 125px;
+}
+
+
+/*Add Component*/
+.add_body{
+    background-color: white;
+    border: 6px solid #DFD4DD;
+    padding: 10px 5% 10px 5%;
+}

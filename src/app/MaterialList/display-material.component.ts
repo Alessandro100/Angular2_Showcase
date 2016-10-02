@@ -14,6 +14,9 @@ export class DisplayMaterialComponent implements OnInit{
     materials_needed: Material[];//local var
     newMaterial = new Material();
 
+    isNew = true;
+    index_select = -1;
+
     constructor(private _materialmanager: MaterialManagerService){
 
     }
@@ -24,11 +27,38 @@ export class DisplayMaterialComponent implements OnInit{
         )
     }
 
-    addLocalMaterial(newMaterial: Material){
-        this.materials_needed.push(newMaterial);
+    addLocalMaterial(){//for new materials
+        let holder = Object.assign({}, this.newMaterial);
+        this.materials_needed.push(holder);
+        this.newMaterial = new Material();
     }
 
-    onSave(){
-        //post data back
+    editLocalMaterial(index: number){//initializes the editing process
+        this.index_select = index;
+        this.isNew = false;
+        this.newMaterial = Object.assign({},this.materials_needed[index]);//clones a holder 
+    }
+
+    deleteLocalMaterial(){
+        this.materials_needed.splice(this.index_select, 1);
+        this.isNew = true;
+        this.newMaterial = new Material();
+    }
+
+    saveLocalMaterial(){//saves the edit
+        this.materials_needed[this.index_select] = this.newMaterial;
+        this.isNew = true;
+        this.newMaterial = new Material();
+    }
+
+    onCancel(){
+        this.isNew = true;
+        this.newMaterial = new Material();
+    }
+
+    onSave(){//saves to database
+        this._materialmanager.saveAllMaterials(this.materials_needed).subscribe(
+            (res:any) => console.log(res)
+        );
     }
 }

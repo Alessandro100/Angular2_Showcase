@@ -12,7 +12,7 @@ import { ART_ROUTES } from "./Art/art.routes";
 //Sets the routing paths for the program
 const routes: Routes = [//level one routing
     {path: '', redirectTo: "/Arts", pathMatch: "full" },//sets the home directory to /Arts
-    {path: 'Arts', component: DisplayArtComponent},//this is the home component
+    {path: 'Arts', component: DisplayArtComponent, resolve: {}},//this is the home component
     {path: 'Arts', component: DisplayArtComponent, children: ART_ROUTES},
     {path: 'Material', component: DisplayMaterialComponent}
     //add shopping list component after
