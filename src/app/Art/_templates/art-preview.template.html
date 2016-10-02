@@ -1,17 +1,20 @@
 
-<div>
+<div class = "add_body preview_body">
     <h1>{{selected_Art.title}}</h1>
     <img src = "{{selected_Art.img}}" width = "300px" height="300px">
-    <div>
-        <div class = "button success_button" (click) = "toShoppingList()">To Shopping List</div>
-        <div class = "button info_button" (click) = "onEdit()">Edit</div>
-        <div class = "button error_button" (click) = "onDelete()"> Delete</div>
+    <div class = "inner_body">
+        <div class = "button_display">
+            <div class = "button success_button" (click) = "toShoppingList()">To Shopping List</div>
+            <div class = "button info_button" (click) = "onEdit()">Edit</div>
+            <div class = "button error_button" (click) = "onDelete()"> Delete</div>
+        </div>
+        
+        <label>{{selected_Art.content}}</label>
+        
+        <ul>
+            <li *ngFor = "let material of selected_Art.materials">
+                {{material.name}}({{material.amount}})
+            </li>
+        </ul>
     </div>
-
-    <label>{{selected_Art.content}}</label>
-    <ul>
-        <li *ngFor = "let material of selected_Art.material">
-            {{material.name}}({{material.amount}})
-        </li>
-    </ul>
 </div>

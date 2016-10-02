@@ -1,34 +1,27 @@
 
 <div class = "add_body" style = "float:right;">
-    <h1>This is Add</h1>
-
+    <h1 *ngIf = "isNew">Make a New Post</h1>
+    <h1 *ngIf = "!isNew">Edit {{Art.title}}</h1>
     <!-- Add validation -->
-    <form (ngSubmit) = "OnSubmit()">
+    <form class = "add_form" (ngSubmit) = "OnSubmit()">
         <div class = "button success_button" type = "submit" (click) = "OnSubmit()">Save</div>
         <div class = "button error_button" (click) = "OnCancel()">Cancel</div>
-        <div>
-            <label>Title:</label>
-            <input type="text" [(ngModel)] = "Art.title" name = "title">
-        </div>
-        <div>
-            <label>Image URL:</label>
-            <input type="text" [(ngModel)] = "Art.img" name = "img"><br>
-            <img src = "{{Art.img}}" width="100px" height="100px">
-        </div>
-        <div>
-            <label>Content:</label>
-            <input type="text" [(ngModel)] = "Art.content" name = "content"> <!-- make a textarea -->
-        </div>
-        <br>
-        <div>
-            <label>Materials</label><br>
-            <ul>
-                <li *ngFor = "let item of Art.materials; let i = index">
-                    {{item.name}}({{item.amount}})
-                    <div class = "button error_button delete_button"  (click) = "deleteMaterial(i)">X</div>
-                </li>
-            </ul>
-        </div>
+
+        <table>
+            <tr>
+                <td><label>Title:</label></td>
+                <td><input type="text" [(ngModel)] = "Art.title" name = "title"></td>
+            </tr>
+            <tr>
+                <td><label>Content:</label></td>
+                <td><input type="text" [(ngModel)] = "Art.content" name = "content"></td>
+            </tr>
+            <tr>
+                <td><label>Image URL:</label></td>
+                <td><input type="text" [(ngModel)] = "Art.img" name = "img"></td>
+            </tr>
+        </table>
+        <img src = "{{Art.img}}" width="100px" height="100px">
         <div>
             <my-material-add (new_material) = "addMaterial($event)"></my-material-add>
         </div>

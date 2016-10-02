@@ -49,5 +49,46 @@ label{
 .add_body{
     background-color: white;
     border: 6px solid #DFD4DD;
-    padding: 10px 5% 10px 5%;
+    padding: 10px 5% 20px 5%;
+    width: 350px;
+    float:right;
+}
+
+.add_form img{
+    display: block;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+/*Preview Component*/
+
+.preview_body{
+    
+}
+
+.preview_body img{
+    display: block;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+.preview_body .inner_body{
+    background-color: #c0ccb3;
+    position: relative;
+    padding-bottom: 7px;
+    padding-left: 2px;
+    margin-bottom: 20px;
+}
+
+.preview_body .inner_body .button_display{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    padding: 20px 3px 20px 3px;
+    
+}
+
+.preview_body label{
+   color: #577167;
+   padding-left: 3px;
 }
